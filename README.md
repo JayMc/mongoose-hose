@@ -3,14 +3,15 @@
 ## use cases
 * chat
 * IOT
+* Dashboard
 
-## Basic usage
+## Basic usage (setup)
 ```javascript
-mySchema = mongoose.Schema({
+MySchema = mongoose.Schema({
 	title: String,
 });
 
-mySchema.plugin(hose);
+MySchema.plugin(hose, /* options */);
 ```
 
 ## options
@@ -22,18 +23,17 @@ const options = {
 }
 ```
 
-## API
-### hoseFindByIdAndAdd
-Callbacks
+## Basic usage (save to hose)
+Callback
 ```javascript
-doc.hoseFindByIdAndAdd(parent_id, newComment, function (err, doc) {
+MySchema.hoseFindByIdAndAdd(parent_id, newComment, function (err, doc) {
 
 })
 ```
 
 Promise
 ```javascript
-doc.hoseFindByIdAndAdd(parent_id, newComment)
+MySchema.hoseFindByIdAndAdd(parent_id, newComment)
 	.then(result => {
 
 	})
@@ -46,4 +46,4 @@ doc.hoseFindByIdAndAdd(parent_id, newComment)
 * nvm use
 * npm i
 * ??
-* mocha test
+* npm run test
