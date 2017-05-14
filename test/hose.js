@@ -12,8 +12,8 @@ describe('hose schema method test', function() {
 		});
 
 		options = {
-			limit: 3,
 			arrayName: 'hose',
+			limit: 3,
 		};
 
 		channelSchema.plugin(hose, options);
