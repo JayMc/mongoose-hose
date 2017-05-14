@@ -1,8 +1,20 @@
 {
   "name": "mongoose-hose",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hose is plugin for your Mongoose schema that allows a fixed length array of nested docs. Useful for storing only the newest subdocs while leaving he oldest to be lost. When a doc is pushed into the array, if length is more than the limit the oldest will be deteted. First in First out (deleted). However this is done as a single atomic Mongo query to prevent race conditions.",
   "main": "index.js",
+  "keywords": [
+    "mongoose",
+    "plugin",
+    "hose",
+    "buffer",
+    "chat",
+    "IOT",
+    "circular buffer",
+    "circular queue",
+    "ring buffer",
+    "FIFO"
+  ],
   "scripts": {
     "test": "mocha test"
   },
