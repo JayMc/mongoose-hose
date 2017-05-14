@@ -1,4 +1,4 @@
-var hose = require('../lib/hose');
+var hose = require('../index');
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
