@@ -17,7 +17,7 @@ module.exports = exports = function (schema, options = defaultOptions) {
 		[ options.arrayName ]: [],
 	});
 
-	schema.statics.hoseFindByIdAndAdd = function (id, data, cb = null) {
+	schema.statics.hoseInsert = function (id, data, cb = null) {
 		if (options._id !== false) {
 			data._id = mongoose.Types.ObjectId();
 		}

@@ -47,13 +47,13 @@ describe('hose schema method test', function() {
 	it('should add one to the hose', function (done) {
 		// get a parent id for test
 		Channel.findOne({}, function(err, parent) {
-			Channel.hoseFindByIdAndAdd(parent._id, { body: 'hello from hoseFindByIdAndAdd' })
+			Channel.hoseInsert(parent._id, { body: 'hello from hoseInsert' })
 				.then((result) => {
 					expect(result.nModified).to.be.equal(1)
 					Channel.findOne(parent._id, function(err, result) {
 
 						expect(result.hose.length).to.eql(1)
-						expect(result.hose[0].body).to.eql('hello from hoseFindByIdAndAdd')
+						expect(result.hose[0].body).to.eql('hello from hoseInsert')
 						done()
 					})
 
@@ -65,18 +65,18 @@ describe('hose schema method test', function() {
 
 		Channel.findOne({}, function(err, parent) {
 
-			Channel.hoseFindByIdAndAdd(parent._id, { body: 'hello from hoseFindByIdAndAdd 2' })
+			Channel.hoseInsert(parent._id, { body: 'hello from hoseInsert 2' })
 			.then((result) => {
 				expect(result.nModified).to.be.equal(1)
 
-				Channel.hoseFindByIdAndAdd(parent._id, { body: 'hello from hoseFindByIdAndAdd 3' })
+				Channel.hoseInsert(parent._id, { body: 'hello from hoseInsert 3' })
 				.then((result) => {
 					expect(result.nModified).to.be.equal(1)
 
 					Channel.findOne(parent._id, function(err, result) {
 						expect(result.hose.length).to.eql(3)
-						expect(result.hose[1].body).to.eql('hello from hoseFindByIdAndAdd 2')
-						expect(result.hose[2].body).to.eql('hello from hoseFindByIdAndAdd 3')
+						expect(result.hose[1].body).to.eql('hello from hoseInsert 2')
+						expect(result.hose[2].body).to.eql('hello from hoseInsert 3')
 						done()
 					})
 
@@ -89,13 +89,13 @@ describe('hose schema method test', function() {
 		// get a parent id for test
 		Channel.findOne({}, function(err, parent) {
 
-			Channel.hoseFindByIdAndAdd(parent._id, { body: 'hello from hoseFindByIdAndAdd 4' })
+			Channel.hoseInsert(parent._id, { body: 'hello from hoseInsert 4' })
 			.then((result) => {
 				expect(result.nModified).to.be.equal(1)
 
 				Channel.findOne(parent._id, function(err, result) {
 					expect(result.hose.length).to.eql(3)
-					expect(result.hose[2].body).to.eql('hello from hoseFindByIdAndAdd 4')
+					expect(result.hose[2].body).to.eql('hello from hoseInsert 4')
 					done()
 				})
 
@@ -107,7 +107,7 @@ describe('hose schema method test', function() {
 		Channel.findOne({}, function(err, parent) {
 			var arr = []
 			for (var i = 0; i < 1350; i++) {
-				arr.push(Channel.hoseFindByIdAndAdd(parent._id, { body: 'should add many '+i }))
+				arr.push(Channel.hoseInsert(parent._id, { body: 'should add many '+i }))
 			}
 
 			Promise.all(arr).then(function(a) {
@@ -125,7 +125,7 @@ describe('hose schema method test', function() {
 	// get a parent id for test
 	Channel.findOne({}, function(err, parent) {
 
-		Channel.hoseFindByIdAndAdd(parent._id, { body: 'with callback' }, function(err, result) {
+		Channel.hoseInsert(parent._id, { body: 'with callback' }, function(err, result) {
 			expect(result.nModified).to.be.equal(1)
 
 			Channel.findOne(parent._id, function(err, result) {

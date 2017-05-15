@@ -29,14 +29,14 @@ const options = {
 ## Basic usage (save to hose)
 Callback
 ```javascript
-MySchema.hoseFindByIdAndAdd(parent_id, newComment, function (err, doc) {
+MySchema.hoseInsert(parent_id, newComment, function (err, doc) {
 
 })
 ```
 
 Promise
 ```javascript
-MySchema.hoseFindByIdAndAdd(parent_id, newComment)
+MySchema.hoseInsert(parent_id, newComment)
 	.then(result => {
 
 	})
