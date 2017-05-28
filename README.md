@@ -20,13 +20,13 @@ MySchema.plugin(hose, /* options */);
 ## options
 ```javascript
 const options = {
-	_id: false // prevent subdocs in the hose from having a mongo ObjectId
 	limit: 100, // number of hose items before popping off the old ones (think about the size of your subdocs and frequency of read/writes)
 	arrayName: 'hose', // name of the hose containing the subdocs
 }
 ```
 
-## Basic usage (save to hose)
+## Basic usage
+### save to hose
 Callback
 ```javascript
 MySchema.hoseInsert(parent_id, newComment, function (err, doc) {
@@ -37,6 +37,25 @@ MySchema.hoseInsert(parent_id, newComment, function (err, doc) {
 Promise
 ```javascript
 MySchema.hoseInsert(parent_id, newComment)
+	.then(result => {
+
+	})
+	.catch(error => {
+
+	})
+```
+
+### update hose item
+Callback
+```javascript
+MySchema.hoseUpdate(parent_id, hoseItem_id, updatedComment, function (err, doc) {
+
+})
+```
+
+Promise
+```javascript
+MySchema.hoseUpdate(parent_id, hoseItem_id, updatedComment)
 	.then(result => {
 
 	})
